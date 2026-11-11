@@ -1,0 +1,8 @@
+/* Keep the searchable control tables legible at ordinary browser widths. */
+.wy-nav-content { max-width: 1100px; }
+.wy-table-responsive table td,
+.wy-table-responsive table th {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.rst-content .figure img { height: auto; }

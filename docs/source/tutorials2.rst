@@ -1,36 +1,21 @@
-.. _tutorials2:
+Reproducible Python tutorials
+=============================
 
-Fiting the RV data
-..................
+The current examples replace earlier downloadable session-based tutorials:
 
-If you want to use the library on the Python shell/script
+* ``examples/51Peg_RV.py`` and ``51Peg_RV.ipynb``: circular two-instrument RV fit.
+* ``examples/HIP5364_RV.py`` and ``HIP5364_RV.ipynb``: multi-planet RV workflow.
+* ``examples/WASP6_transit.py`` and ``WASP6_transit.ipynb``: transit modeling.
+* ``examples/compare_transit_models.py``: compare available transit models.
+* ``examples/check_native_likelihood.py``: native likelihood evaluation.
+* ``examples/posterior_stability_scripts``: posterior dynamical analysis.
 
-In [1]: import exostriker
+Read ``examples/README.md`` for requirements, command-line options and expected
+outputs. Run scripts from the checkout root with the same Python environment as
+the installed source. Scripts can produce files and long sampling/integration
+runs; choose output directories and computational limits explicitly.
 
-or e.g. to load the RV routines:
-
-In [1]: import exostriker.lib.RV_mod as rv   
-
-In [2]: fit = rv.signal_fit(name="hip5364") #creates the "fit" object that contains everything.    
-
-In [3]: fit.add_dataset("hip5364-Lick","./datafiles/hip5364.vels",0.0.10.0) # add the data file, initial offset and jitter   
-
-In [4]: fit.add_planet(K=50,P=400,e=0,w=0,M0=0,i=90,cap=0)   # planet 1    
-
-In [5]: fit.add_planet(K=50,P=700,e=0,w=0,M0=180,i=90,cap=0) # planet 2    
-
-In [6]: fit.fitting() #optimize the parameters    
-
-In [7]: fit.run_mcmc() # run MCMC, etc...    
- 
-(However, one must be familiar with the functions... A manual on RVmod is planned, but not available at the moment.)
-
-
-
-* All Fortran and python codes in this version need serious clean-up from junk.
-
-* All Fortran codes are planned to be translated with f2py into python-importable libraries.
-
-* Don't ever run MCMC runs (or Nest. Samp.) directly in the embedded Jupyter shell! This will freeze the GUI until is the MCMC done!
-  This is not a bug, simply the jupyter shell needs its thread and this is not done, yet. Hopefully, this will be fixed soon.
-  Please use the GUI navigation.
+The embedded Jupyter console allows interactive inspection of session objects.
+Confirm that the variable you are editing is the intended session and use
+**Edit → push Jupyter var. to GUI** to transfer it. GUI updates and a Python
+object reference are not interchangeable actions. For automation use :doc:`api`.

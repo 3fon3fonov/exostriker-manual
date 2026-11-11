@@ -6,3 +6,6 @@ git-push
 
 # Setuptools distribution folder.
 #/dist/
+
+/docs/_build/
+__pycache__/
